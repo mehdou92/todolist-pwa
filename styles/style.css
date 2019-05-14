@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #FFF176;
+    font-size: 15px;
+    padding: 24px;
+}
+
+#app {
+    background-color: #fff;
+    width: 320px;
+    min-height: calc(320px * 4 / 3);
+    border-radius: 6px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .6);
+
+    /* flexin' */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+button, input {
+    border: none;
+}
+
+#inputField {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-size: 14px;
+    padding: 8px;
+}
+
+#submit {
+    font-size: 13px;
+    color: #fff;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 8px 24px;
+    margin: 8px;
+
+    background-color: #000;
+    border-radius: 25px;
+}
+
+#submit span {
+    letter-spacing: 0;
+}
+
+
+#tasks {
+    display: block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .05);
+    border-radius: 3px;
+    padding: 8px;
+    margin: 8px;
+}
+
+.task {
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+    text-wrap;
+    display: block;
+    max-width: 100%;
+    padding: 8px;
+    line-height: 1.5;
+}
+
+.task:hover {
+    cursor: pointer;
+}
+
+.delete {
+    background-color: transparent;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    margin-left: 8px;
+    color: rgba(0, 0, 0, .3);
+}
+
+.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+footer {
+    background-color: transparent;
+    padding: 4px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, .4);
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

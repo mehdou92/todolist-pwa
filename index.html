@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#FFF176">
+    <meta name="Description" content="A cool todo list">
+    <title>CC1 - Todo list Mehdi ABKHOUKH</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>
+<div id="app">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js');
+            });
+        }
+    </script>
+    <input type="text" placeholder="Press ENTER to create a new task" id="inputField"/>
+    <button id="submit">Submi<span>t</span></button>
+    <div id="tasks"></div>
+</div>
+<script type="module" src="./js/app.js" async></script>
+</body>
+</html>
