@@ -3,6 +3,8 @@
 ##### Get started
 - Put the project in your localhost server
 - ``yarn install`` in the project
-- Open the project in your navigator
+-  start json server ``json-server --watch data/db.json``
+- start polymer serve ``npx polymer serve``
+- Follow the link in your terminal from your navigator
 
  

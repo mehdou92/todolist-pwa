@@ -1,3 +1,11 @@
+import checkConnectivity from './connection';
+import { openDB } from "idb";
+
+(async function(document) {
+    checkConnectivity(3, 1000);
+})(document);
+
+
 let input = document.getElementById('inputField');
 
 let submit = document.getElementById('submit');
@@ -13,12 +21,71 @@ function isInArr ( smth, arr ) {
     return isIn;
 }
 
-function createTask ( taskDesc ) {
+async function responseFetch(url) {
+    try {
+        const response = await fetch(url);
+        const tabTodo = await response.json();
+        for(let i = 0; i < tabTodo.length; i+=1) {
+            createTask(tabTodo[i].note, tabTodo[i].id);
+        }
+    }
+    catch (err) {
+        console.log('fetch failed', err);
+    }
+}
+
+async function addFetch(url, data) {
+    try{
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+        const response = await fetch(url, options);
+        if (response.ok) {
+            return response
+            //refresh
+        } else {
+            console.error('error response post');
+            //
+        }
+    }
+    catch (err) {
+        console.log('fetch failed', err);
+    }
+}
+
+async function removeFetch(url) {
+    try{
+        const options = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        };
+        const response = await fetch(url, options);
+        if (response.ok) {
+            return response
+            //refresh
+        } else {
+            console.error('error response delete');
+            //
+        }
+    }
+    catch (err) {
+        console.log('fetch failed', err);
+    }
+}
+
+function createTask ( taskDesc, id ) {
     let task = document.createElement('p'),
         desc = document.createTextNode(taskDesc);
 
     task.appendChild(desc);
     task.classList.add('task');
+    task.id = id;
 
     // Done or not done
     task.addEventListener('click', function () {
@@ -40,12 +107,12 @@ function createTask ( taskDesc ) {
     document.getElementById('tasks').appendChild(task);
 
     del.onclick = function () {
+        removeFetch(`http://localhost:3000/posts/${this.parentNode.id}`);
         this.parentNode.parentNode.removeChild(this.parentNode);
     };
-
 }
 
-createTask('Click on me to be done');
+responseFetch('http://localhost:3000/posts');
 
 function resetInput () {
     input.value = "";
@@ -56,6 +123,7 @@ function  todolist () {
         alert('empty')
     } else {
         createTask(input.value);
+        addFetch('http://localhost:3000/posts', {note: `${input.value}`});
         resetInput();
     }
 }
