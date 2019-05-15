@@ -4,6 +4,6 @@
 - ``yarn install`` in the project
 -  start json server ``json-server --watch data/db.json``
 - start polymer serve ``npx polymer serve``
-- Follow the link in your terminal from your navigator
+- Follow the link in your terminal from polymer command
 
  
